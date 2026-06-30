@@ -92,7 +92,7 @@ function Swirl({ flip = false, className = "" }: { flip?: boolean; className?: s
 }
 
 /* Small gold heart with an optional label inside — used in the calendar header. */
-function HeartTag({ label, size = 30 }: { label?: string; size?: number }) {
+function HeartTag({ label, size = 34 }: { label?: string; size?: number }) {
   return (
     <span className="relative inline-grid place-items-center" style={{ width: size, height: size }}>
       <svg viewBox="0 0 32 30" width={size} height={size} aria-hidden>
@@ -105,7 +105,7 @@ function HeartTag({ label, size = 30 }: { label?: string; size?: number }) {
       </svg>
       {label && (
         <span
-          className="absolute text-[9px] font-semibold text-[#5b3d12] md:text-[10px]"
+          className="absolute text-[10px] font-semibold text-[#5b3d12] md:text-xs"
           style={{ marginTop: -2 }}
         >
           {label}
@@ -266,7 +266,7 @@ function Countdown() {
   ];
   return (
     <div className="mx-auto max-w-3xl">
-      <p className="mb-6 text-center text-xs uppercase tracking-[0.35em] text-gold-deep md:text-sm">
+      <p className="mb-6 text-center text-sm uppercase tracking-[0.3em] text-gold-deep md:text-base">
         Тўйимизга қолди
       </p>
       <div className="grid grid-cols-4 gap-3 md:gap-6">
@@ -289,7 +289,7 @@ function Countdown() {
             >
               {mounted ? String(it.value).padStart(2, "0") : "00"}
             </motion.div>
-            <div className="mt-1 text-[10px] uppercase tracking-widest text-ink-soft md:text-sm">
+            <div className="mt-1 text-xs uppercase tracking-widest text-ink-soft md:text-base">
               {it.label}
             </div>
           </motion.div>
@@ -352,7 +352,7 @@ function WeddingCalendar() {
         {/* heart weekday header */}
         <div className="mt-4 flex justify-center gap-1 md:gap-1.5">
           {WEEKDAYS.map((w) => (
-            <HeartTag key={w} label={w} size={30} />
+            <HeartTag key={w} label={w} />
           ))}
         </div>
 
@@ -388,19 +388,19 @@ function WeddingCalendar() {
                         strokeWidth="0.8"
                       />
                     </svg>
-                    <span className="relative text-sm font-bold text-[#5b3d12] md:text-base">
+                    <span className="relative text-base font-bold text-[#5b3d12] md:text-lg">
                       {d}
                     </span>
                   </motion.div>
                 ) : (
-                  <span className="text-sm text-ink-soft md:text-base">{d}</span>
+                  <span className="text-base text-ink md:text-lg">{d}</span>
                 )}
               </div>
             );
           })}
         </div>
 
-        <p className="mt-5 text-center text-xs uppercase tracking-[0.25em] text-gold-deep md:text-sm">
+        <p className="mt-5 text-center text-sm uppercase tracking-[0.22em] text-gold-deep md:text-base">
           Бошланиши соат 18:00 да
         </p>
       </div>
@@ -621,7 +621,7 @@ function Index() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2, duration: 1.2 }}
-            className="mt-2 text-xs uppercase tracking-[0.45em] text-gold-deep md:text-sm"
+            className="mt-2 text-sm uppercase tracking-[0.4em] text-gold-deep md:text-base"
           >
             Тўй таклифномаси
           </motion.p>
@@ -634,7 +634,7 @@ function Index() {
           <Sparkles />
           <div className="relative">
             <p
-              className="mb-6 text-lg text-gold-deep md:text-2xl"
+              className="mb-6 text-2xl text-gold-deep md:text-3xl"
               style={{ fontFamily: "var(--font-script)" }}
             >
               Бирга абадиятга...
@@ -681,14 +681,14 @@ function Index() {
           style={{ boxShadow: "var(--shadow-soft)" }}
         >
           <p
-            className="text-gold-gradient text-3xl md:text-4xl"
+            className="text-gold-gradient text-4xl md:text-5xl"
             style={{ fontFamily: "var(--font-script)" }}
           >
             Ассалому алайкум!
           </p>
           <div className="my-5 text-2xl text-gold/70">❦</div>
           <p
-            className="text-xl leading-relaxed text-ink md:text-2xl"
+            className="text-2xl leading-loose text-ink md:text-3xl"
             style={{ fontFamily: "var(--font-display)" }}
           >
             Сизни азиз меҳмонимизни{" "}
@@ -736,7 +736,9 @@ function Index() {
                 <item.icon className="h-9 w-9 text-gold-deep" />
               </motion.div>
               <div className="min-w-0 text-center md:text-left">
-                <p className="text-sm uppercase tracking-widest text-ink-soft">{item.label}</p>
+                <p className="text-base uppercase tracking-widest text-ink-soft md:text-lg">
+                  {item.label}
+                </p>
                 <p
                   className="text-gold-gradient text-4xl font-semibold md:text-5xl"
                   style={{ fontFamily: "var(--font-display)" }}
@@ -763,7 +765,7 @@ function Index() {
             >
               <MapPin className="h-8 w-8 text-gold-deep" />
             </div>
-            <p className="text-sm uppercase tracking-widest text-ink-soft">Манзил</p>
+            <p className="text-base uppercase tracking-widest text-ink-soft md:text-lg">Манзил</p>
             <h2
               className="text-gold-gradient text-4xl md:text-6xl"
               style={{ fontFamily: "var(--font-display)" }}
@@ -801,7 +803,7 @@ function Index() {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
-              className="inline-flex items-center gap-2 rounded-full px-8 py-3 text-sm font-semibold uppercase tracking-wider text-white gold-foil"
+              className="inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-base font-semibold uppercase tracking-wider text-white gold-foil"
               style={{ boxShadow: "var(--shadow-gold)" }}
             >
               <MapPin className="h-4 w-4" />
@@ -816,7 +818,7 @@ function Index() {
         <motion.div variants={fadeUp} className="mx-auto max-w-2xl">
           <Ornament />
           <p
-            className="text-xl italic leading-relaxed text-ink md:text-2xl"
+            className="text-2xl italic leading-loose text-ink md:text-3xl"
             style={{ fontFamily: "var(--font-display)" }}
           >
             Азиз меҳмонимиз, қувончимизга шерик бўлишингизни{" "}
@@ -831,7 +833,7 @@ function Index() {
         <motion.div variants={scaleIn} className="mx-auto max-w-3xl">
           <PhotoFrame src={rings} alt="Никоҳ узуклари">
             <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-t from-black/65 via-black/25 to-transparent p-6 text-center">
-              <p className="mb-2 text-xs uppercase tracking-widest text-gold-soft md:text-sm">
+              <p className="mb-2 text-sm uppercase tracking-widest text-gold-soft md:text-base">
                 Ҳурмат билан
               </p>
               <p
